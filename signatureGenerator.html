@@ -16,82 +16,111 @@
     <div class="container">
         <div class="element form">
             <h1>Signature generator</h1>
-            <div><span class="fieldName">First name :</span>
-                <input type="text" placeholder="Hugo" v-model="firstName"></div>
-            <div><span class="fieldName">Last name :</span>
-                <input type="text" placeholder="Attal" v-model="lastName"></div>
-            <div><span class="fieldName">Job title :</span>
-                <input type="text" placeholder="Software Designer" v-model="jobTitle"></div>
-            <div><span class="fieldName">Photo link :</span>
-                <input type="text" placeholder="https://.../photo.png" v-model="photoLink"></div>
-            <div><span class="fieldName">Links type :</span>
-                <select v-model="linksType"></div>
-                    <option value="0">Default (EN)</option>
-                    <option value="1">Default (FR)</option>
-                    <option value="2">Sales and IS/SDR Team (EN)</option>
-                    <option value="3">Sales and IS/SDR Team (FR)</option>
-                    <option value="4">Customer Success Team (EN)</option>
-                    <option value="5">Customer Success Team (FR)</option>
-                    <option value="6">None</option>
-                </select></div>
-        <div v-if="(linksType==2)||(linksType==3)"><span class="fieldName">Youcanbookme link :</span>
-            <input type="text" placeholder="https://youcanbook.me/" v-model="customLink"></div>
-        <button class="copy-clipboard" onclick="copySignature()">
-            Copy signature
-        </button>
-    </div>
-    <br>
-    <div id="render" class="element">
-        <div
-            style="font-family:'Open Sans','Gill Sans MT','Myriad Pro','DejaVu Sans Condensed',Helvetica,Arial,sans-serif;width: 300px">
-            <div style="display:flex; align-items:center">
-                <img alt="photo"
-                     :src="photoLinkGen"
-                style="width:60px; height:60px; border-radius: 4px">
-                <div style="color:#000000;line-height:15px;padding-left:10px">
-                    <span style="font-size:16px">{{ firstNameGen }} {{ lastNameGen }}</span><br>
-                    <span style="font-size:10px;">{{ jobTitleGen }}</span>
+            <div class="form-wrapper">
+                <div class="form-field">
+                    <label for="firstName" class="field-name">First name :</label>
+                    <input id="firstName" type="text" placeholder="Hugo" v-model="firstName">
+                </div>
+                <div class="form-field">
+                    <label for="lastName" class="field-name">Last name :</label>
+                    <input id="lastName" type="text" placeholder="Attal" v-model="lastName">
+                </div>
+                <div class="form-field">
+                    <label for="jobTitle" class="field-name">Job title :</label>
+                    <input id="jobTitle" type="text" placeholder="Software Designer" v-model="jobTitle">
+                </div>
+                <div class="form-field">
+                    <span for="photoLink" class="field-name">Photo link :</span>
+                    <input id="photoLink" type="text" placeholder="https://.../photo.png" v-model="photoLink">
+                </div>
+                <div class="form-field">
+                    <label for="phoneNumber" class="field-name">Phone number :</label>
+                    <input id="phoneNumber" type="text" placeholder="+33 (0)6.73.49.75.00 (optional)" v-model="phoneNumber">
+                </div>
+                <div class="form-field">
+                    <label class="field-name">Address :</label>
+                    <select v-model="address">
+                        <option value="0">Paris</option>
+                        <option value="1">New York</option>
+                        <option value="2">London</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="linksType" class="field-name">Links type :</label>
+                    <select id="linksType" v-model="linksType">
+                        <option value="0">Default (EN)</option>
+                        <option value="1">Default (FR)</option>
+                        <option value="2">Sales and IS/SDR Team (EN)</option>
+                        <option value="3">Sales and IS/SDR Team (FR)</option>
+                        <option value="4">Customer Success Team (EN)</option>
+                        <option value="5">Customer Success Team (FR)</option>
+                        <option value="6">None</option>
+                    </select>
+                </div>
+                <div v-if="(linksType==2)||(linksType==3)">
+                    <label for="customLink" class="field-name">Booking link :</label>
+                    <input id="customLink" type="text" placeholder="https://youcanbook.me/" v-model="customLink">
                 </div>
             </div>
-            <hr style="background:#ededed; height:1px; border:none">
-            <div style="display:flex; align-items:center; justify-content:space-between">
-                <img alt="360Learning"
-                     src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signature360Learning.jpg">
-                <div style="font-size:10px;color:#9e9e9e;">CONNECTING LEADERS TO LEARNERS</div>
-            </div>
-            <div v-if="linksType<6"
-                 style="background:#00c4a7; border-radius:5px; height: 30px; text-align: center;line-height: 30px;margin-bottom: 10px">
-                <a style="font-family:OpenSans-SemiBold,arial,sans-serif;color:#ffffff; text-decoration: underline;font-size: 12px;text-transform: uppercase"
-                   :href="firstLink"
-                >{{ firstLinkName }}</a>
-            </div>
-            <div v-if="linksType<6"
-                 style="background:#194883; border-radius:5px; height: 30px; text-align: center;line-height: 30px;">
-                <a style="font-family:OpenSans-SemiBold,arial,sans-serif;color:#ffffff; text-decoration: underline;font-size: 12px;text-transform: uppercase"
-                   :href="secondLink"
-                >{{ secondLinkName }}</a>
-            </div>
-            <hr style="background:#ededed; height:1px; border:none">
-            <div style="display:flex; align-items:center; justify-content:space-between">
-                <div>
-                    <a href="https://www.linkedin.com/company/360learning/"
-                    ><img alt="LinkedIn"
-                          src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signatureVisuelLinkedin.jpg"></a>
-                    <a href="https://www.facebook.com/360learningFR/"
-                    ><img alt="Facebook"
-                          src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signatureVisuelFacebook.jpg"></a>
-                    <a href="https://twitter.com/360learning"
-                    ><img alt="Twitter"
-                          src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signatureVisuelTwitter.jpg"></a>
-                    <a href="https://www.youtube.com/channel/UCFnvDYsEPBZjEnYEm4Er72w"
-                    ><img alt="Youtube"
-                          src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signatureVisuelYoutube.jpg"></a>
+            <br>
+            <button class="copy-clipboard" onclick="copySignature()">
+                Copy signature into clipboard
+            </button>
+        </div>
+        <br>
+        <div id="render" class="element">
+            <div
+                style="font-family:'Open Sans','Gill Sans MT','Myriad Pro','DejaVu Sans Condensed',Helvetica,Arial,sans-serif;width: 300px;max-width:300px">
+                <table style="width:300px"><tr><td>
+                <div style="display:flex; align-items:center">
+                    <img alt="photo"
+                         :src="photoLinkGen"
+                    style="width:60px; height:60px; border-radius: 4px">
+                    <div style="color:#000000;line-height:15px;padding-left:10px">
+                        <span style="font-size:16px">{{ firstNameGen }} {{ lastNameGen }}</span><br>
+                        <span style="font-size:10px;">{{ jobTitleGen }} <br v-if="phoneNumber"> {{ phoneNumber }}</span>
+                    </div>
                 </div>
-                <div style="font-size:10px;color:#9e9e9e;">117 RUE DE LA TOUR, 75016 PARIS</div>
+                <hr style="background:#ededed; height:1px; border:none">
+                <div style="display:flex; align-items:center; justify-content:space-between">
+                    <img alt="360Learning"
+                         src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signature360Learning.jpg">
+                    <div style="font-size:10px;color:#9e9e9e;">CONNECTING LEADERS TO LEARNERS</div>
+                </div>
+                <div v-if="linksType<6"
+                     style="background:#00c4a7; border-radius:5px; height: 30px; text-align: center;line-height: 30px;margin-bottom: 10px">
+                    <a style="font-family:OpenSans-SemiBold,arial,sans-serif;color:#ffffff; text-decoration: none;font-size: 12px;text-transform: uppercase"
+                       :href="firstLink"
+                    >{{ firstLinkName }}</a>
+                </div>
+                <div v-if="linksType<6"
+                     style="background:#194883; border-radius:5px; height: 30px; text-align: center;line-height: 30px;">
+                    <a style="font-family:OpenSans-SemiBold,arial,sans-serif;color:#ffffff; text-decoration: none;font-size: 12px;text-transform: uppercase"
+                       :href="secondLink"
+                    >{{ secondLinkName }}</a>
+                </div>
+                <hr style="background:#ededed; height:1px; border:none">
+                <div style="display:flex; align-items:center; justify-content:space-between">
+                    <div>
+                        <a href="https://www.linkedin.com/company/360learning/"
+                        ><img alt="LinkedIn"
+                              src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signatureVisuelLinkedin.jpg"></a>
+                        <a href="https://www.facebook.com/360learningFR/"
+                        ><img alt="Facebook"
+                              src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signatureVisuelFacebook.jpg"></a>
+                        <a href="https://twitter.com/360learning"
+                        ><img alt="Twitter"
+                              src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signatureVisuelTwitter.jpg"></a>
+                        <a href="https://www.youtube.com/channel/UCFnvDYsEPBZjEnYEm4Er72w"
+                        ><img alt="Youtube"
+                              src="https://eu-lon05.marketo.com/rs/652-UEB-256/images/signatureVisuelYoutube.jpg"></a>
+                    </div>
+                    <div style="font-size:10px;color:#9e9e9e;">{{ addressGen }}</div>
+                </div>
+                </td></tr></table>
             </div>
         </div>
     </div>
-</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->

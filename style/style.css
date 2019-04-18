@@ -26,6 +26,7 @@ html, body
 .container
 {
     max-width: 980px;
+    padding: 0 10px;
     margin: auto;
 }
 
@@ -44,10 +45,22 @@ h1
     color: #333333;
 }
 
-.fieldName
+.form-wrapper
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-field
+{
+    margin-right: 20px;
+}
+
+.field-name
 {
     display: inline-block;
-    width: 140px;
+    width: 100px;
     font-size: 13px;
 }
 
@@ -55,7 +68,7 @@ input, select
 {
     padding: 9px;
     border: 1px solid #eeeeee;
-    width: 500px;
+    width: 340px;
     border-radius: 4px;
     margin: 2px 0;
     box-sizing: border-box;
@@ -77,7 +90,7 @@ button
     border: 1px solid #194883;
     background: #ffffff;
     text-transform: uppercase;
-    width: 200px;
+    width: 250px;
     cursor: pointer;
 }
 
@@ -94,7 +107,6 @@ button:hover
 
 .copy-clipboard
 {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    margin: auto;
+    display: block;
 }

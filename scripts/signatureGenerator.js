@@ -52,7 +52,9 @@ var app = new Vue({
         jobTitle: "",
         linksType: 0,
         customLink: "",
-        photoLink: ""
+        photoLink: "",
+        phoneNumber: "",
+        address: 0
     },
     computed: {
         firstLink: function () {
@@ -60,10 +62,10 @@ var app = new Vue({
             {
                 return this.customLink;
             }
-            return baseLink[this.linksType].first[0]+"?utm_source=signature&utm_medium=email_corpo&utm_campaign="+this.firstName.cleanup()+"_"+this.lastName.cleanup();
+            return baseLink[this.linksType].first[0]+"?utm_source=signature&utm_medium=email_corpo&utm_campaign="+this.firstNameGen.cleanup()+"_"+this.lastNameGen.cleanup();
         },
         secondLink: function () {
-            return baseLink[this.linksType].second[0]+"?utm_source=signature&utm_medium=email_corpo&utm_campaign="+this.firstName.cleanup()+"_"+this.lastName.cleanup();
+            return baseLink[this.linksType].second[0]+"?utm_source=signature&utm_medium=email_corpo&utm_campaign="+this.firstNameGen.cleanup()+"_"+this.lastNameGen.cleanup();
         },
         firstLinkName: function () {
             return baseLink[this.linksType].first[1];
@@ -81,7 +83,18 @@ var app = new Vue({
             return this.jobTitle || "Software Designer";
         },
         photoLinkGen: function () {
-            return this.photoLink || "https://image.noelshack.com/fichiers/2019/15/5/1555091187-profil.png";
+            return this.photoLink || "https://image.noelshack.com/fichiers/2019/16/4/1555583545-default-profil.png";
+        },
+        addressGen: function () {
+            switch (parseInt(this.address))
+            {
+                case 1:
+                    return "33 IRVING PLACE, NEW YORK, NY 10003";
+                case 2:
+                    return "No.3, 138 HOLBORN, LONDON EC1N2SW";
+                default:
+                    return "117 RUE DE LA TOUR, 75016 PARIS";
+            }
         }
     }
 });
