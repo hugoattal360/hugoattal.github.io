@@ -70,8 +70,8 @@
         <br>
         <div id="render" class="element">
             <div
-                style="font-family:'Open Sans','Gill Sans MT','Myriad Pro','DejaVu Sans Condensed',Helvetica,Arial,sans-serif;width: 300px;max-width:300px">
-                <table style="width:300px"><tr><td>
+                style="font-family:'Open Sans',Arial,sans-serif;width: 320px;max-width:320px">
+                <table style="width:320px"><tr><td>
                 <div style="display:flex; align-items:center">
                     <img alt="photo"
                          :src="photoLinkGen"
@@ -89,13 +89,13 @@
                 </div>
                 <div v-if="linksType<6"
                      style="background:#00c4a7; border-radius:5px; height: 30px; text-align: center;line-height: 30px;margin-bottom: 10px">
-                    <a style="font-family:OpenSans-SemiBold,arial,sans-serif;color:#ffffff; text-decoration: none;font-size: 12px;text-transform: uppercase"
+                    <a style="color:#ffffff; text-decoration: none;font-size: 12px;text-transform: uppercase"
                        :href="firstLink"
                     >{{ firstLinkName }}</a>
                 </div>
                 <div v-if="linksType<6"
                      style="background:#194883; border-radius:5px; height: 30px; text-align: center;line-height: 30px;">
-                    <a style="font-family:OpenSans-SemiBold,arial,sans-serif;color:#ffffff; text-decoration: none;font-size: 12px;text-transform: uppercase"
+                    <a style="color:#ffffff; text-decoration: none;font-size: 12px;text-transform: uppercase"
                        :href="secondLink"
                     >{{ secondLinkName }}</a>
                 </div>
