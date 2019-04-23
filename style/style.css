@@ -45,6 +45,30 @@ h1
     color: #333333;
 }
 
+p
+{
+    font-size: 12px;
+    margin: 4px 0;
+}
+
+a
+{
+    color: #00A0FF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+ol
+{
+    font-size: 12px;
+    margin: 4px 0;
+}
+
 .form-wrapper
 {
     display: flex;

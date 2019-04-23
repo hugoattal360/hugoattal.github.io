@@ -29,8 +29,9 @@ const baseLink = [
     }
 ];
 
-function copySignature () {
+function copySignature() {
     copyToClip(document.getElementById("render").innerHTML);
+    alert("Your signature was copied into your clipboard. You can now Ctrl+V it on Gmail 😉\n\n(Or use \"right click/paste\" for the craziest ones out there 😬...)");
 }
 
 function copyToClip(str) {
@@ -42,7 +43,7 @@ function copyToClip(str) {
     document.addEventListener("copy", listener);
     document.execCommand("copy");
     document.removeEventListener("copy", listener);
-};
+}
 
 var app = new Vue({
     el: '#app',
@@ -95,6 +96,12 @@ var app = new Vue({
                 default:
                     return "117 RUE DE LA TOUR, 75016 PARIS";
             }
+        }
+    },
+    methods:{
+        preventBadCopy: function (event)
+        {
+            alert("Please, use the \"Copy signature into clipboard\" big blue button 🙂 !\n\n (If you use the context menu, your signature might be badly injured 💀)");
         }
     }
 });
