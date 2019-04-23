@@ -38,32 +38,32 @@ html, body
     padding: 20px;
 }
 
-h1
+.form h1
 {
     font-size: 21px;
     font-weight: 100;
     color: #333333;
 }
 
-p
+.form p
 {
     font-size: 12px;
     margin: 4px 0;
 }
 
-a
+.form a
 {
     color: #00A0FF;
     font-weight: bold;
     text-decoration: none;
 }
 
-a:hover
+.form a:hover
 {
     text-decoration: underline;
 }
 
-ol
+.form ol
 {
     font-size: 12px;
     margin: 4px 0;
