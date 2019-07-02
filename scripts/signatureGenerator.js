@@ -102,7 +102,7 @@ var app = new Vue({
                 case 1:
                     return "33 IRVING PLACE, NEW YORK, NY 10003";
                 case 2:
-                    return "No.3, 138 HOLBORN, LONDON EC1N2SW";
+                    return "3 Waterhouse Square 138-142 Holborn, London EC1N 2SW";
                 default:
                     return "117 RUE DE LA TOUR, 75016 PARIS";
             }
