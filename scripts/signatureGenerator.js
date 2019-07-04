@@ -116,7 +116,7 @@ var app = new Vue({
         importData: async function(event)
         {
             const jsonpTag = document.createElement("script");
-            jsonpTag.src = "https://sales.360mooc.com/api/webext/users/search/" + this.mail +"/0?callback=loadData";
+            jsonpTag.src = "https://sales.360mooc.com/api/webext/unsafeJSONP/users360/mail/" + this.mail +"/0?callback=loadData";
             document.querySelector("head").appendChild(jsonpTag);
         }
     }
