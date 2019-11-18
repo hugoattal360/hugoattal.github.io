@@ -96,6 +96,9 @@ var app = new Vue({
         photoLinkGen: function () {
             return this.photoLink || "https://team.360learning.com/api/medias/user/5c8f8244a651986f49906009";
         },
+        phoneNumberHref: function () {
+            return "tel:" +  this.phoneNumber.replace(/\s/g, '');
+        },
         addressGen: function () {
             switch (parseInt(this.address))
             {

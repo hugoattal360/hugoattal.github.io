@@ -55,10 +55,6 @@
                     <label for="phoneNumber" class="field-name">Phone number :</label>
                     <input id="phoneNumber" type="text" placeholder="+336 73 49 75 00 (optional)" v-model="phoneNumber">
                 </div>
-                <div v-if="(linksType==2)||(linksType==3)">
-                    <label for="customLink" class="field-name">Booking link :</label>
-                    <input id="customLink" type="text" placeholder="https://youcanbook.me/" v-model="customLink">
-                </div>
             </div>
             <br>
             <h1>3 - Copy your signature</h1>
@@ -123,7 +119,7 @@
                                         style="background-color: #4286ED;width:13px; height: 13px;">
                                 </td>
                                 <td>
-                                    <a :href="'tel:'+phoneNumber" style="color:#57586E;text-decoration: none">{{ phoneNumber }}</a>
+                                    <a :href="phoneNumberHref" style="color:#57586E;text-decoration: none">{{ phoneNumber }}</a>
                                 </td>
                             </tr>
                             <tr>
