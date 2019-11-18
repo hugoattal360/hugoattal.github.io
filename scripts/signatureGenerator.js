@@ -94,7 +94,7 @@ var app = new Vue({
             return this.jobTitle || "Software Designer";
         },
         photoLinkGen: function () {
-            return this.photoLink || "https://image.noelshack.com/fichiers/2019/16/4/1555583545-default-profil.png";
+            return this.photoLink || "https://team.360learning.com/api/medias/user/5c8f8244a651986f49906009";
         },
         addressGen: function () {
             switch (parseInt(this.address))
